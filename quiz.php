@@ -19,6 +19,10 @@ echo "Score initial : 0\n";
 echo "###################################################\n";
 echo "\n";
 
+echo "Avant de commencer, quel est ton prénom ?\n";
+$nom = trim(fgets(STDIN));
+
+
 for ($i = 0; $i < count($questions); $i++) {
     echo "\n";
     echo $questions[$i] . "\n";
@@ -56,6 +60,11 @@ if ($pourcentage >= 50) {
     echo "\n";
     echo "#################### GAME OVER ####################\n";
 }
+
+$save = fopen("historique.txt", "a+");
+fwrite($save, $nom.";".$score."\n");
+fclose($save);
+
 
 echo "\n";
 echo "Bien joué tu as gagné des millions !\n";
